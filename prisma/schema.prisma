@@ -1,0 +1,384 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ==================== USER & AUTH ====================
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  passwordHash  String?
+  name          String
+  image         String?
+  role          Role      @default(STUDENT)
+  emailVerified DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts      Account[]
+  sessions      Session[]
+  enrollments   Enrollment[]
+  submissions   Submission[]
+  certificates  Certificate[]
+  quizAttempts  QuizAttempt[]
+  examAttempts  ExamAttempt[]
+  progress      LessonProgress[]
+  courses       Course[]    @relation("InstructorCourses")
+
+  @@index([email])
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+enum Role {
+  STUDENT
+  INSTRUCTOR
+  ADMIN
+}
+
+// ==================== COURSES ====================
+
+model Course {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  description String   @db.Text
+  shortDesc   String?
+  thumbnail   String?
+  level       Level
+  duration    Int      // in hours
+  price       Decimal  @default(0) @db.Decimal(10, 2)
+  published   Boolean  @default(false)
+  featured    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  instructorId String
+  instructor   User     @relation("InstructorCourses", fields: [instructorId], references: [id])
+  categoryId   String?
+  category     Category? @relation(fields: [categoryId], references: [id])
+
+  modules      Module[]
+  enrollments  Enrollment[]
+  certificates Certificate[]
+  exams        Exam[]
+
+  @@index([slug])
+  @@index([published])
+  @@index([categoryId])
+}
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  slug        String   @unique
+  description String?
+  icon        String?
+  courses     Course[]
+}
+
+enum Level {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}
+
+// ==================== MODULES & LESSONS ====================
+
+model Module {
+  id          String   @id @default(cuid())
+  title       String
+  description String?  @db.Text
+  order       Int
+  duration    Int      // in minutes
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  courseId String
+  course   Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  lessons  Lesson[]
+  quiz     Quiz?
+
+  @@index([courseId])
+}
+
+model Lesson {
+  id          String     @id @default(cuid())
+  title       String
+  type        LessonType
+  content     Json
+  order       Int
+  duration    Int        // in minutes
+  isFree      Boolean    @default(false)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  moduleId String
+  module   Module           @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  progress LessonProgress[]
+
+  @@index([moduleId])
+}
+
+model LessonProgress {
+  id          String   @id @default(cuid())
+  completed   Boolean  @default(false)
+  completedAt DateTime?
+  timeSpent   Int      @default(0) // in seconds
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  userId   String
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lessonId String
+  lesson   Lesson @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, lessonId])
+  @@index([userId])
+}
+
+enum LessonType {
+  VIDEO
+  TEXT
+  CODE_LAB
+  QUIZ
+}
+
+// ==================== ENROLLMENTS ====================
+
+model Enrollment {
+  id           String           @id @default(cuid())
+  progress     Int              @default(0) // percentage
+  status       EnrollmentStatus @default(ACTIVE)
+  startedAt    DateTime         @default(now())
+  completedAt  DateTime?
+  lastAccessAt DateTime         @default(now())
+
+  userId   String
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courseId String
+  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, courseId])
+  @@index([userId])
+  @@index([courseId])
+}
+
+enum EnrollmentStatus {
+  ACTIVE
+  COMPLETED
+  PAUSED
+  EXPIRED
+}
+
+// ==================== QUIZZES ====================
+
+model Quiz {
+  id           String   @id @default(cuid())
+  title        String
+  description  String?
+  timeLimit    Int?     // in minutes
+  passingScore Int      @default(60)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  moduleId  String        @unique
+  module    Module        @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  questions QuizQuestion[]
+  attempts  QuizAttempt[]
+}
+
+model QuizQuestion {
+  id           String   @id @default(cuid())
+  question     String   @db.Text
+  type         QuestionType
+  options      Json     // array of options
+  correctAnswer Json    // correct answer(s)
+  explanation  String?  @db.Text
+  points       Int      @default(1)
+  order        Int
+
+  quizId String
+  quiz   Quiz   @relation(fields: [quizId], references: [id], onDelete: Cascade)
+
+  @@index([quizId])
+}
+
+model QuizAttempt {
+  id          String   @id @default(cuid())
+  score       Int
+  passed      Boolean
+  answers     Json     // user's answers
+  startedAt   DateTime @default(now())
+  completedAt DateTime?
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  quizId String
+  quiz   Quiz   @relation(fields: [quizId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([quizId])
+}
+
+enum QuestionType {
+  MULTIPLE_CHOICE
+  MULTIPLE_SELECT
+  TRUE_FALSE
+  CODE
+  SHORT_ANSWER
+}
+
+// ==================== EXAMS ====================
+
+model Exam {
+  id           String   @id @default(cuid())
+  title        String
+  description  String?  @db.Text
+  timeLimit    Int      // in minutes
+  passingScore Int      @default(60)
+  proctored    Boolean  @default(false)
+  retakeDelay  Int      @default(7) // days
+  price        Decimal  @default(0) @db.Decimal(10, 2)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  courseId  String
+  course    Course         @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  questions ExamQuestion[]
+  attempts  ExamAttempt[]
+
+  @@index([courseId])
+}
+
+model ExamQuestion {
+  id            String       @id @default(cuid())
+  question      String       @db.Text
+  type          QuestionType
+  options       Json
+  correctAnswer Json
+  explanation   String?      @db.Text
+  points        Int          @default(1)
+  domain        String?      // for blueprint tracking
+
+  examId String
+  exam   Exam   @relation(fields: [examId], references: [id], onDelete: Cascade)
+
+  @@index([examId])
+}
+
+model ExamAttempt {
+  id          String          @id @default(cuid())
+  score       Int
+  passed      Boolean
+  answers     Json
+  startedAt   DateTime        @default(now())
+  completedAt DateTime?
+  status      ExamAttemptStatus @default(IN_PROGRESS)
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  examId String
+  exam   Exam   @relation(fields: [examId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([examId])
+}
+
+enum ExamAttemptStatus {
+  IN_PROGRESS
+  COMPLETED
+  TIMED_OUT
+  FLAGGED
+}
+
+// ==================== CERTIFICATES ====================
+
+model Certificate {
+  id         String   @id @default(cuid())
+  title      String
+  verifyCode String   @unique
+  issuedAt   DateTime @default(now())
+  expiresAt  DateTime
+  badgeUrl   String?
+  score      Int?
+  distinction Boolean @default(false)
+
+  userId   String
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courseId String
+  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@index([verifyCode])
+  @@index([userId])
+}
+
+// ==================== SUBMISSIONS (Code Labs) ====================
+
+model Submission {
+  id        String           @id @default(cuid())
+  code      String           @db.Text
+  language  String
+  status    SubmissionStatus @default(PENDING)
+  output    String?          @db.Text
+  error     String?          @db.Text
+  score     Int?
+  feedback  String?          @db.Text
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+
+  userId   String
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lessonId String?
+
+  @@index([userId])
+}
+
+enum SubmissionStatus {
+  PENDING
+  RUNNING
+  PASSED
+  FAILED
+  ERROR
+}
