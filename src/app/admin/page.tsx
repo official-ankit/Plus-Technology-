@@ -134,17 +134,17 @@ export default function AdminPage() {
                     <p className="text-2xl font-bold">{stat.value}</p>
                     <div className="mt-1 flex items-center gap-1 text-sm">
                       {stat.trend === 'up' ? (
-                        <ArrowUpRight className="h-4 w-4 text-green-500" />
+                        <ArrowUpRight className="h-4 w-4 text-primary" />
                       ) : (
                         <ArrowDownRight className="h-4 w-4 text-red-500" />
                       )}
-                      <span className={stat.trend === 'up' ? 'text-green-500' : 'text-red-500'}>
+                      <span className={stat.trend === 'up' ? 'text-primary' : 'text-red-500'}>
                         {stat.change}
                       </span>
                       <span className="text-muted-foreground">vs last month</span>
                     </div>
                   </div>
-                  <div className={`rounded-full p-3 bg-${stat.color}-100 dark:bg-${stat.color}-900/20`}>
+                  <div className={`rounded-full p-3 bg-${stat.color}-100`}>
                     <stat.icon className={`h-6 w-6 text-${stat.color}-600`} />
                   </div>
                 </div>
@@ -358,7 +358,7 @@ export default function AdminPage() {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-sm font-medium text-green-600">{enrollment.amount}</div>
+                      <div className="text-sm font-medium text-primary">{enrollment.amount}</div>
                       <div className="text-xs text-muted-foreground">{enrollment.date}</div>
                     </div>
                   </div>

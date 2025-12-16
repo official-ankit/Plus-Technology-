@@ -16,7 +16,6 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { cn, getInitials } from '@/lib/utils';
-import { ThemeToggle } from './theme-toggle';
 
 interface NavbarProps {
   user?: {
@@ -30,6 +29,8 @@ interface NavbarProps {
 const navItems = [
   { href: '/courses', label: 'Courses' },
   { href: '/certifications', label: 'Certifications' },
+  { href: '/about', label: 'About Us' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export function Navbar({ user }: NavbarProps) {
@@ -43,9 +44,10 @@ export function Navbar({ user }: NavbarProps) {
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold">
-            CI
+            IPT
           </div>
-          <span className="hidden font-bold sm:inline-block">Computer Institute</span>
+          <span className="hidden font-bold sm:inline-block">Plus Technology
+Courses</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -90,8 +92,6 @@ export function Navbar({ user }: NavbarProps) {
           >
             <Search className="h-5 w-5" />
           </Button>
-
-          <ThemeToggle />
 
           {user ? (
             <DropdownMenu>
@@ -147,10 +147,10 @@ export function Navbar({ user }: NavbarProps) {
           ) : (
             <div className="flex items-center space-x-2">
               <Button variant="ghost" asChild className="hidden sm:inline-flex">
-                <Link href="/login">Sign in</Link>
+                <Link href="/signin">Sign in</Link>
               </Button>
               <Button asChild>
-                <Link href="/register">Get Started</Link>
+                <Link href="/signup">Get Started</Link>
               </Button>
             </div>
           )}
@@ -198,7 +198,7 @@ export function Navbar({ user }: NavbarProps) {
             ))}
             {!user && (
               <Link
-                href="/login"
+                href="/signin"
                 className="block rounded-md px-3 py-2 text-base font-medium text-muted-foreground hover:bg-muted"
                 onClick={() => setMobileMenuOpen(false)}
               >

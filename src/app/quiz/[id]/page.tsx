@@ -241,20 +241,20 @@ export default function QuizPage({ params }: { params: { id: string } }) {
           <CardHeader className="text-center">
             {passed ? (
               <>
-                <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/20">
-                  <Award className="h-10 w-10 text-green-500" />
+                <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
+                  <Award className="h-10 w-10 text-primary" />
                 </div>
-                <CardTitle className="text-2xl text-green-600 dark:text-green-400">
+                <CardTitle className="text-2xl text-primary">
                   Congratulations!
                 </CardTitle>
                 <CardDescription>You passed the quiz!</CardDescription>
               </>
             ) : (
               <>
-                <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-red-100 dark:bg-red-900/20">
+                <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-red-100">
                   <XCircle className="h-10 w-10 text-red-500" />
                 </div>
-                <CardTitle className="text-2xl text-red-600 dark:text-red-400">
+                <CardTitle className="text-2xl text-red-600">
                   Not Quite!
                 </CardTitle>
                 <CardDescription>You need {quiz.passingScore}% to pass</CardDescription>
@@ -273,7 +273,7 @@ export default function QuizPage({ params }: { params: { id: string } }) {
 
             <div className="grid grid-cols-3 gap-4">
               <div className="rounded-lg border p-3 text-center">
-                <div className="flex items-center justify-center gap-1 text-green-500">
+                <div className="flex items-center justify-center gap-1 text-primary">
                   <CheckCircle className="h-4 w-4" />
                   <span className="font-bold">{correctAnswers}</span>
                 </div>
@@ -341,11 +341,11 @@ export default function QuizPage({ params }: { params: { id: string } }) {
         </div>
 
         {/* Question Card */}
-        <Card className={isCorrect ? 'border-green-500' : 'border-red-500'}>
+        <Card className={isCorrect ? 'border-primary' : 'border-red-500'}>
           <CardHeader>
             <div className="flex items-center gap-2">
               {isCorrect ? (
-                <CheckCircle className="h-5 w-5 text-green-500" />
+                <CheckCircle className="h-5 w-5 text-primary" />
               ) : (
                 <XCircle className="h-5 w-5 text-red-500" />
               )}
@@ -362,9 +362,9 @@ export default function QuizPage({ params }: { params: { id: string } }) {
 
               let className = 'rounded-lg border p-4 transition-colors';
               if (isCorrectAnswer) {
-                className += ' border-green-500 bg-green-50 dark:bg-green-900/20';
+                className += ' border-primary bg-primary/5';
               } else if (isUserAnswer && !isCorrectAnswer) {
-                className += ' border-red-500 bg-red-50 dark:bg-red-900/20';
+                className += ' border-red-500 bg-red-50';
               }
 
               return (
@@ -373,7 +373,7 @@ export default function QuizPage({ params }: { params: { id: string } }) {
                     <div
                       className={`flex h-6 w-6 items-center justify-center rounded-full text-sm font-medium ${
                         isCorrectAnswer
-                          ? 'bg-green-500 text-white'
+                          ? 'bg-primary text-white'
                           : isUserAnswer
                           ? 'bg-red-500 text-white'
                           : 'border bg-muted'
@@ -382,7 +382,7 @@ export default function QuizPage({ params }: { params: { id: string } }) {
                       {String.fromCharCode(65 + index)}
                     </div>
                     <span className="flex-1">{option}</span>
-                    {isCorrectAnswer && <CheckCircle className="h-5 w-5 text-green-500" />}
+                    {isCorrectAnswer && <CheckCircle className="h-5 w-5 text-primary" />}
                     {isUserAnswer && !isCorrectAnswer && <XCircle className="h-5 w-5 text-red-500" />}
                   </div>
                 </div>

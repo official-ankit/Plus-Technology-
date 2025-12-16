@@ -1,7 +1,6 @@
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
-  darkMode: ['class'],
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -10,6 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Enterprise Theme Colors
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -18,6 +18,7 @@ const config: Config = {
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
+          hover: 'hsl(var(--primary-hover))',
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
@@ -50,6 +51,33 @@ const config: Config = {
         warning: {
           DEFAULT: 'hsl(var(--warning))',
           foreground: 'hsl(var(--warning-foreground))',
+        },
+        // Direct color references for gradients
+        teal: {
+          DEFAULT: '#105E69',
+          50: '#E6F3F5',
+          100: '#CCE7EB',
+          200: '#99CFD7',
+          300: '#66B7C3',
+          400: '#339FAF',
+          500: '#1A7A87',
+          600: '#105E69',
+          700: '#0D4A53',
+          800: '#09363D',
+          900: '#052227',
+        },
+        ocean: {
+          DEFAULT: '#1A7A87',
+          50: '#E8F4F6',
+          100: '#D1E9ED',
+          200: '#A3D3DB',
+          300: '#75BDC9',
+          400: '#47A7B7',
+          500: '#1A7A87',
+          600: '#15626C',
+          700: '#104A51',
+          800: '#0B3236',
+          900: '#061A1B',
         },
       },
       borderRadius: {

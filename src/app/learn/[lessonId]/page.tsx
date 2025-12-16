@@ -224,7 +224,7 @@ export default function LearnPage({ params }: { params: { lessonId: string } }) 
                             }`}
                           >
                             {lessonItem.completed ? (
-                              <CheckCircle className="h-4 w-4 shrink-0 text-green-500" />
+                              <CheckCircle className="h-4 w-4 shrink-0 text-primary" />
                             ) : (
                               <Icon className="h-4 w-4 shrink-0 text-muted-foreground" />
                             )}
@@ -321,7 +321,7 @@ export default function LearnPage({ params }: { params: { lessonId: string } }) 
               <TabsContent value="overview" className="mt-6">
                 <Card>
                   <CardContent className="p-6">
-                    <div className="prose prose-sm max-w-none dark:prose-invert">
+                    <div className="prose prose-sm max-w-none">
                       {lesson.description.split('\n\n').map((para, i) => (
                         <p key={i} className="whitespace-pre-line">{para}</p>
                       ))}

@@ -1,9 +1,12 @@
+'use client';
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
+import { EnrollForm } from '@/components/forms/enroll-form';
 import {
   Star,
   Clock,
@@ -262,9 +265,11 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
                   </div>
 
                   <div className="mb-4 space-y-3">
-                    <Button className="w-full" size="lg">
-                      Enroll Now
-                    </Button>
+                    <EnrollForm 
+                      courseName={course.title} 
+                      coursePrice={course.price}
+                      originalPrice={course.originalPrice}
+                    />
                     <Button variant="outline" className="w-full" size="lg">
                       Add to Wishlist
                     </Button>
@@ -301,7 +306,12 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
               </span>
             </div>
           </div>
-          <Button>Enroll Now</Button>
+          <EnrollForm 
+            courseName={course.title} 
+            coursePrice={course.price}
+            originalPrice={course.originalPrice}
+            trigger={<Button>Enroll Now</Button>}
+          />
         </div>
       </div>
 
@@ -340,7 +350,7 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
                   <CardTitle>Description</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="prose prose-sm max-w-none dark:prose-invert">
+                  <div className="prose prose-sm max-w-none">
                     {course.description.split('\n\n').map((para, i) => (
                       <p key={i}>{para}</p>
                     ))}

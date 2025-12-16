@@ -13,159 +13,196 @@ import {
   Briefcase,
   FileCheck,
   Star,
+  Palette,
+  Monitor,
+  Code,
 } from 'lucide-react';
 
 const certifications = [
   {
-    id: 'olevel',
-    title: 'O-Level (NIELIT)',
-    fullName: 'NIELIT O-Level IT Certificate',
-    description: 'Foundation course in IT equivalent to "A" Level Diploma in Computer Science. Recognized by Government of India for employment and higher education.',
-    duration: '1 Year',
-    modules: 4,
-    exams: 4,
-    price: 15999,
-    features: [
-      'Government recognized certification',
-      'Equivalent to Foundation level in Computer Applications',
-      'Valid for government jobs requiring O-Level',
-      'Pathway to A-Level certification',
-      'Practical and theory-based learning',
-      'Industry-standard curriculum',
-    ],
-    subjects: [
-      'IT Tools and Business Systems',
-      'Internet Technology and Web Design',
-      'Programming and Problem Solving through C',
-      'Application of .NET Technology',
-    ],
-    eligibility: '10+2 or ITI Certificate (1 Year after 10th)',
-    careers: ['Data Entry Operator', 'Computer Operator', 'Web Designer', 'Junior Programmer'],
-    popular: true,
-  },
-  {
-    id: 'alevel',
-    title: 'A-Level (NIELIT)',
-    fullName: 'NIELIT A-Level Advanced Diploma',
-    description: 'Advanced diploma in IT equivalent to PGDCA. Ideal for those who want to pursue a career in software development and IT management.',
-    duration: '1 Year (after O-Level)',
+    id: 'dca',
+    title: 'DCA',
+    fullName: 'Diploma in Computer Application',
+    description: 'Foundation diploma covering computer fundamentals, MS Office, internet technologies, and basic programming. Ideal for beginners entering the IT field.',
+    duration: '6 Months',
     modules: 6,
-    exams: 6,
-    price: 24999,
-    features: [
-      'Equivalent to PGDCA/MCA First Year',
-      'Recognized for Group A & B Central Govt. posts',
-      'Advanced programming and database skills',
-      'Project-based learning',
-      'Industry internship opportunities',
-      'Placement assistance',
-    ],
-    subjects: [
-      'Computer Organization and Operating Systems',
-      'Data Structure through C++',
-      'Software Engineering',
-      'Database Management Systems',
-      'Computer Networks',
-      'Project Work',
-    ],
-    eligibility: 'O-Level certification or Graduation in any discipline',
-    careers: ['Software Developer', 'Database Administrator', 'System Analyst', 'Network Administrator'],
-    popular: false,
-  },
-  {
-    id: 'cpp',
-    title: 'C/C++ Professional',
-    fullName: 'Professional Certification in C/C++ Programming',
-    description: 'Industry-recognized certification in C and C++ programming. Master the fundamentals of system programming and object-oriented design.',
-    duration: '4 Months',
-    modules: 8,
-    exams: 2,
+    exams: 4,
     price: 8999,
     features: [
-      'Comprehensive C and C++ coverage',
-      'Object-Oriented Programming mastery',
-      'Data Structures and Algorithms',
-      'Real-world project portfolio',
-      'Interview preparation',
-      'Certificate of completion',
+      'Computer fundamentals and operating systems',
+      'Complete MS Office suite (Word, Excel, PowerPoint)',
+      'Internet and email applications',
+      'Basic programming concepts',
+      'Practical lab sessions',
+      'Certificate upon completion',
     ],
     subjects: [
-      'C Programming Fundamentals',
-      'Advanced C Concepts',
-      'Introduction to C++',
-      'OOP with C++',
-      'STL and Templates',
-      'Data Structures',
-      'Algorithms',
-      'Project Development',
+      'Computer Fundamentals',
+      'MS Word & Documentation',
+      'MS Excel & Spreadsheets',
+      'MS PowerPoint Presentations',
+      'Internet & Email',
+      'Programming Basics',
     ],
-    eligibility: 'Basic computer knowledge',
-    careers: ['C/C++ Developer', 'System Programmer', 'Embedded Developer', 'Game Developer'],
+    eligibility: '10th pass or equivalent',
+    careers: ['Computer Operator', 'Data Entry Operator', 'Office Assistant', 'Front Desk Executive'],
     popular: true,
+    idealFor: 'Students, job seekers, and anyone starting their computer journey',
   },
   {
-    id: 'python',
-    title: 'Python Developer',
-    fullName: 'Professional Python Development Certification',
-    description: 'Become a certified Python developer. Learn web development, data analysis, and automation with Python.',
-    duration: '3 Months',
-    modules: 6,
-    exams: 2,
-    price: 7999,
+    id: 'adca',
+    title: 'ADCA',
+    fullName: 'Advanced Diploma in Computer Application',
+    description: 'Comprehensive advanced diploma with in-depth coverage of programming, web development, databases, and accounting software. Builds on DCA foundation.',
+    duration: '1 Year',
+    modules: 10,
+    exams: 6,
+    price: 14999,
     features: [
-      'Core Python programming',
-      'Web development with Django/Flask',
-      'Data analysis with Pandas',
-      'Automation scripting',
-      'API development',
-      'Portfolio projects',
+      'Everything in DCA plus advanced topics',
+      'Programming in C and C++',
+      'Web development with HTML, CSS, JavaScript',
+      'Database management with SQL',
+      'Tally accounting software',
+      'Project work and practical training',
     ],
     subjects: [
-      'Python Fundamentals',
-      'Object-Oriented Python',
-      'Web Development',
-      'Data Analysis',
-      'Automation & Scripting',
-      'Final Project',
+      'Advanced MS Office',
+      'C Programming',
+      'C++ & Object-Oriented Programming',
+      'Web Designing (HTML, CSS, JS)',
+      'Database Management (SQL)',
+      'Tally with GST',
+      'Project Work',
     ],
-    eligibility: 'Basic computer knowledge',
-    careers: ['Python Developer', 'Data Analyst', 'Backend Developer', 'Automation Engineer'],
+    eligibility: '12th pass or DCA certificate',
+    careers: ['Junior Programmer', 'Web Designer', 'Accounts Executive', 'IT Support Staff'],
     popular: true,
+    idealFor: 'Students seeking comprehensive IT skills for better job opportunities',
   },
   {
-    id: 'webdev',
-    title: 'Full Stack Web Developer',
-    fullName: 'Full Stack Web Development Certification',
-    description: 'Master modern web development with HTML, CSS, JavaScript, React, Node.js, and databases. Build production-ready applications.',
+    id: 'pgdca',
+    title: 'PGDCA',
+    fullName: 'Post Graduate Diploma in Computer Application',
+    description: 'Post-graduate level diploma for graduates covering advanced programming, software engineering, DBMS, and project development. Recognized for government and private sector jobs.',
+    duration: '1 Year',
+    modules: 8,
+    exams: 6,
+    price: 18999,
+    features: [
+      'Advanced programming languages',
+      'Software engineering principles',
+      'Database management systems',
+      'Web technologies and frameworks',
+      'Project development',
+      'Industry-recognized certification',
+    ],
+    subjects: [
+      'Computer Fundamentals & OS',
+      'C & C++ Programming',
+      'Java Programming',
+      'Database Management Systems',
+      'Software Engineering',
+      'Web Technologies',
+      'Python Programming',
+      'Major Project',
+    ],
+    eligibility: 'Graduation in any discipline',
+    careers: ['Software Developer', 'Database Administrator', 'System Analyst', 'IT Manager'],
+    popular: true,
+    idealFor: 'Graduates looking to enter IT sector or enhance programming skills',
+  },
+  {
+    id: 'dgd',
+    title: 'DGD',
+    fullName: 'Diploma in Graphic Designing',
+    description: 'Professional graphic design diploma covering industry-standard tools like Photoshop, CorelDRAW, and Illustrator. Learn to create stunning visual content.',
     duration: '6 Months',
-    modules: 12,
+    modules: 6,
     exams: 3,
-    price: 19999,
+    price: 12999,
     features: [
-      'Frontend development (React)',
-      'Backend development (Node.js)',
-      'Database management (SQL & NoSQL)',
-      'API development',
-      'Cloud deployment',
-      '5+ portfolio projects',
+      'Adobe Photoshop mastery',
+      'CorelDRAW vector graphics',
+      'Adobe Illustrator basics',
+      'Logo and brand design',
+      'Print and digital media design',
+      'Portfolio development',
     ],
     subjects: [
-      'HTML & CSS',
-      'JavaScript',
-      'React.js',
-      'Node.js',
-      'Express.js',
-      'MongoDB',
-      'PostgreSQL',
-      'REST APIs',
-      'Git & GitHub',
-      'Deployment',
-      'Testing',
-      'Capstone Project',
+      'Design Fundamentals & Color Theory',
+      'Adobe Photoshop',
+      'CorelDRAW',
+      'Adobe Illustrator',
+      'Logo & Brand Design',
+      'Print Media Design',
     ],
-    eligibility: 'Basic computer knowledge',
-    careers: ['Frontend Developer', 'Backend Developer', 'Full Stack Developer', 'Web Application Developer'],
+    eligibility: '10th pass with creative interest',
+    careers: ['Graphic Designer', 'Visual Designer', 'Brand Designer', 'Freelance Designer'],
+    popular: true,
+    idealFor: 'Creative individuals pursuing careers in design and media',
+  },
+  {
+    id: 'dwd',
+    title: 'DWD',
+    fullName: 'Diploma in Web Designing',
+    description: 'Complete web design diploma covering HTML, CSS, JavaScript, and responsive design. Create professional websites from scratch.',
+    duration: '6 Months',
+    modules: 6,
+    exams: 3,
+    price: 12999,
+    features: [
+      'HTML5 & semantic markup',
+      'CSS3 & modern styling',
+      'JavaScript fundamentals',
+      'Responsive web design',
+      'Bootstrap framework',
+      'Live project development',
+    ],
+    subjects: [
+      'HTML5 Fundamentals',
+      'CSS3 & Styling',
+      'JavaScript Programming',
+      'Responsive Design',
+      'Bootstrap Framework',
+      'Website Project',
+    ],
+    eligibility: '10th pass with interest in web',
+    careers: ['Web Designer', 'Frontend Developer', 'UI Developer', 'Freelance Web Designer'],
     popular: false,
+    idealFor: 'Anyone interested in creating websites and web applications',
+  },
+  {
+    id: 'cttc',
+    title: 'CTTC',
+    fullName: 'Computer Teacher Training Course',
+    description: 'Specialized course for aspiring computer teachers. Learn teaching methodologies, curriculum design, and practical training techniques.',
+    duration: '6 Months',
+    modules: 8,
+    exams: 4,
+    price: 9999,
+    features: [
+      'Computer education fundamentals',
+      'Teaching methodologies',
+      'Curriculum development',
+      'Classroom management',
+      'Practical teaching sessions',
+      'Teacher certification',
+    ],
+    subjects: [
+      'Computer Fundamentals for Teaching',
+      'MS Office for Educators',
+      'Teaching Methodology',
+      'Curriculum Design',
+      'Classroom Management',
+      'Practical Teaching',
+      'Programming Basics',
+      'Assessment Techniques',
+    ],
+    eligibility: 'Graduation or DCA/ADCA',
+    careers: ['Computer Teacher', 'Training Instructor', 'Education Coordinator', 'Institute Faculty'],
+    popular: false,
+    idealFor: 'Those who want to become computer instructors or start their own institute',
   },
 ];
 
@@ -173,22 +210,22 @@ const benefits = [
   {
     icon: Award,
     title: 'Industry Recognition',
-    description: 'Our certifications are recognized by government bodies and top IT companies across India.',
+    description: 'Our certifications are valued by employers across government and private sectors in India.',
   },
   {
     icon: Briefcase,
     title: 'Career Advancement',
-    description: 'Open doors to new job opportunities and higher salary packages with verified credentials.',
+    description: 'Open doors to new job opportunities in IT, design, accounting, and teaching fields.',
   },
   {
     icon: BookOpen,
-    title: 'Comprehensive Curriculum',
-    description: 'Learn from industry-aligned curriculum designed by experienced professionals.',
+    title: 'Practical Curriculum',
+    description: 'Industry-aligned curriculum designed with hands-on projects and real-world applications.',
   },
   {
     icon: Users,
     title: 'Expert Guidance',
-    description: 'Get mentorship from certified instructors with years of industry experience.',
+    description: 'Get mentorship from experienced instructors with years of industry and teaching experience.',
   },
 ];
 
@@ -200,24 +237,26 @@ export default function CertificationsPage() {
         <div className="container mx-auto px-4 text-center">
           <Badge variant="secondary" className="mb-4">
             <Award className="mr-1 h-3 w-3" />
-            Industry Recognized
+            Plus Technology
+Courses
           </Badge>
           <h1 className="mb-4 text-4xl font-bold md:text-5xl">
-            Professional Certifications
+            Professional Diploma & Certification Programs
           </h1>
           <p className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground">
-            Earn industry-recognized certifications that validate your skills and 
-            open doors to exciting career opportunities in technology.
+            Earn industry-recognized diplomas and certifications from Plus Technology
+Courses. 
+            Our programs are designed for career advancement in IT, design, accounting, and teaching.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button size="lg" asChild>
               <a href="#certifications">
-                Explore Certifications
+                Explore Programs
                 <ArrowRight className="ml-2 h-4 w-4" />
               </a>
             </Button>
             <Button size="lg" variant="outline" asChild>
-              <Link href="/contact">Talk to Advisor</Link>
+              <Link href="/contact">Talk to Counselor</Link>
             </Button>
           </div>
         </div>
@@ -294,7 +333,7 @@ export default function CertificationsPage() {
                     <ul className="grid gap-1 sm:grid-cols-2">
                       {cert.features.slice(0, 4).map((feature, i) => (
                         <li key={i} className="flex items-start gap-2 text-sm">
-                          <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
+                          <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                           <span>{feature}</span>
                         </li>
                       ))}

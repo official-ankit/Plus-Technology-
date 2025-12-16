@@ -227,8 +227,8 @@ export default function DashboardPage() {
           </Card>
           <Card>
             <CardContent className="flex items-center gap-4 p-6">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-green-100 dark:bg-green-900/20">
-                <CheckCircle className="h-6 w-6 text-green-600" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                <CheckCircle className="h-6 w-6 text-primary" />
               </div>
               <div>
                 <div className="text-2xl font-bold">{user.coursesCompleted}</div>
@@ -238,7 +238,7 @@ export default function DashboardPage() {
           </Card>
           <Card>
             <CardContent className="flex items-center gap-4 p-6">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-yellow-100 dark:bg-yellow-900/20">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-yellow-100">
                 <Award className="h-6 w-6 text-yellow-600" />
               </div>
               <div>
@@ -249,7 +249,7 @@ export default function DashboardPage() {
           </Card>
           <Card>
             <CardContent className="flex items-center gap-4 p-6">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-orange-100 dark:bg-orange-900/20">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-orange-100">
                 <Flame className="h-6 w-6 text-orange-600" />
               </div>
               <div>
@@ -325,8 +325,8 @@ export default function DashboardPage() {
                     <Card key={course.id}>
                       <CardContent className="flex items-center justify-between p-4">
                         <div className="flex items-center gap-4">
-                          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-green-100 dark:bg-green-900/20">
-                            <CheckCircle className="h-6 w-6 text-green-600" />
+                          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                            <CheckCircle className="h-6 w-6 text-primary" />
                           </div>
                           <div>
                             <h3 className="font-semibold">{course.title}</h3>
@@ -393,7 +393,7 @@ export default function DashboardPage() {
                 <div className="grid gap-4 sm:grid-cols-2">
                   {certificates.map((cert) => (
                     <Card key={cert.id} className="overflow-hidden">
-                      <div className="aspect-[4/3] bg-gradient-to-br from-yellow-100 to-yellow-50 dark:from-yellow-900/20 dark:to-yellow-800/10 flex items-center justify-center">
+                      <div className="aspect-[4/3] bg-gradient-to-br from-yellow-100 to-yellow-50 flex items-center justify-center">
                         <Award className="h-16 w-16 text-yellow-500" />
                       </div>
                       <CardContent className="p-4">
@@ -469,7 +469,7 @@ export default function DashboardPage() {
                     <div
                       className={`flex h-10 w-10 items-center justify-center rounded-full ${
                         achievement.earned
-                          ? 'bg-yellow-100 dark:bg-yellow-900/20'
+                          ? 'bg-yellow-100'
                           : 'bg-muted'
                       }`}
                     >
@@ -488,7 +488,7 @@ export default function DashboardPage() {
                       </div>
                     </div>
                     {achievement.earned && (
-                      <CheckCircle className="h-5 w-5 text-green-500" />
+                      <CheckCircle className="h-5 w-5 text-primary" />
                     )}
                   </div>
                 ))}

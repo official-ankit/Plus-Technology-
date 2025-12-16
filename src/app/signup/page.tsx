@@ -125,7 +125,7 @@ export default function SignUpPage() {
                     <div
                       key={i}
                       className={`flex items-center gap-2 text-xs ${
-                        req.met ? 'text-green-600' : 'text-muted-foreground'
+                        req.met ? 'text-primary' : 'text-muted-foreground'
                       }`}
                     >
                       <CheckCircle className={`h-3 w-3 ${req.met ? 'opacity-100' : 'opacity-30'}`} />

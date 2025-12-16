@@ -21,41 +21,51 @@ const contactInfo = [
   {
     icon: MapPin,
     title: 'Visit Us',
-    details: ['PlusTec Computer Institute', '123 Tech Park, Sector 5', 'New Delhi, 110001'],
+    details: ['Plus Technology
+Courses', 'Near Main Market', 'Your City, State - PIN'],
   },
   {
     icon: Phone,
     title: 'Call Us',
-    details: ['+91 98765 43210', '+91 11 2345 6789'],
+    details: ['+91 XXXXX XXXXX', '+91 XXXXX XXXXX'],
   },
   {
     icon: Mail,
     title: 'Email Us',
-    details: ['info@plustec.edu.in', 'admissions@plustec.edu.in'],
+    details: ['info@instituteplustechnology.com', 'admissions@instituteplustechnology.com'],
   },
   {
     icon: Clock,
     title: 'Working Hours',
-    details: ['Mon - Fri: 9:00 AM - 7:00 PM', 'Sat: 9:00 AM - 5:00 PM', 'Sun: Closed'],
+    details: ['Mon - Sat: 9:00 AM - 7:00 PM', 'Sunday: 10:00 AM - 2:00 PM'],
   },
 ];
 
 const faqs = [
   {
-    question: 'How do I enroll in a course?',
-    answer: 'You can enroll online through our website or visit our center. Click on "Enroll Now" on any course page to start the process.',
+    question: 'How do I enroll in a course at Plus Technology
+Courses?',
+    answer: 'You can enroll by visiting our institute during working hours, calling our admission helpline, or filling out the enquiry form on this page. Our counselors will guide you through the admission process.',
   },
   {
     question: 'What payment methods do you accept?',
-    answer: 'We accept all major credit/debit cards, UPI, net banking, and EMI options. We also offer installment plans for longer courses.',
+    answer: 'We accept cash, all major debit/credit cards, UPI payments, and net banking. We also offer installment plans for diploma courses like DCA, ADCA, and PGDCA.',
   },
   {
-    question: 'Are the certifications recognized?',
-    answer: 'Yes, our NIELIT certifications (O-Level, A-Level) are government-recognized. Other certifications are industry-standard and valued by employers.',
+    question: 'Do you provide certificates after course completion?',
+    answer: 'Yes, all students receive a certificate upon successful completion of their course. Our certificates are recognized and valued by employers across industries.',
   },
   {
-    question: 'Do you offer placement assistance?',
-    answer: 'Yes, we provide placement assistance including resume building, interview preparation, and connections with our hiring partners.',
+    question: 'What is the batch timing and duration?',
+    answer: 'We offer flexible batch timings - morning, afternoon, and evening batches. Course duration varies from 1 month to 1 year depending on the program. Our counselors will help you choose the right batch.',
+  },
+  {
+    question: 'Do you provide placement assistance?',
+    answer: 'Yes, we provide career guidance and placement support including resume building, interview preparation, and connections with local employers and companies.',
+  },
+  {
+    question: 'Can working professionals join your courses?',
+    answer: 'Absolutely! We have weekend and evening batches specifically designed for working professionals. Our flexible timing options allow you to learn without disrupting your work schedule.',
   },
 ];
 
@@ -81,10 +91,11 @@ export default function ContactPage() {
             <MessageSquare className="mr-1 h-3 w-3" />
             Get in Touch
           </Badge>
-          <h1 className="mb-4 text-4xl font-bold md:text-5xl">Contact Us</h1>
+          <h1 className="mb-4 text-4xl font-bold md:text-5xl">Contact Plus Technology
+Courses</h1>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Have questions about our courses or certifications? We&apos;re here to help.
-            Reach out to us and we&apos;ll get back to you as soon as possible.
+            Have questions about our courses or admissions? We&apos;re here to help.
+            Visit our institute, call us, or fill out the enquiry form below. Our counselors will guide you in choosing the right course for your career goals.
           </p>
         </div>
       </section>
@@ -127,8 +138,8 @@ export default function ContactPage() {
               <CardContent>
                 {isSubmitted ? (
                   <div className="flex flex-col items-center justify-center py-8 text-center">
-                    <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/20">
-                      <CheckCircle className="h-8 w-8 text-green-600" />
+                    <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+                      <CheckCircle className="h-8 w-8 text-primary" />
                     </div>
                     <h3 className="mb-2 text-xl font-semibold">Thank You!</h3>
                     <p className="mb-4 text-muted-foreground">

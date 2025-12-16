@@ -1,37 +1,37 @@
 import Link from 'next/link';
-import { Github, Twitter, Linkedin, Youtube } from 'lucide-react';
+import { Github, Twitter, Linkedin, Youtube, Facebook, Instagram } from 'lucide-react';
 
 const footerLinks = {
-  product: [
-    { label: 'Courses', href: '/courses' },
-    { label: 'Certifications', href: '/certifications' },
-    { label: 'Pricing', href: '/pricing' },
-    { label: 'For Enterprise', href: '/enterprise' },
+  courses: [
+    { label: 'All Courses', href: '/courses' },
+    { label: 'DCA Diploma', href: '/courses/dca' },
+    { label: 'ADCA Diploma', href: '/courses/adca' },
+    { label: 'PGDCA', href: '/courses/pgdca' },
+    { label: 'Tally Prime with GST', href: '/courses/tally' },
   ],
-  resources: [
-    { label: 'Documentation', href: '/docs' },
-    { label: 'Blog', href: '/blog' },
-    { label: 'Community', href: '/community' },
-    { label: 'Help Center', href: '/help' },
+  programs: [
+    { label: 'Certifications', href: '/certifications' },
+    { label: 'Graphic Designing', href: '/courses/dgd' },
+    { label: 'Web Designing', href: '/courses/dwd' },
+    { label: 'Programming Courses', href: '/courses?category=Programming' },
+    { label: 'Computer Teacher Training', href: '/courses/cttc' },
   ],
   company: [
-    { label: 'About', href: '/about' },
-    { label: 'Careers', href: '/careers' },
+    { label: 'About Us', href: '/about' },
     { label: 'Contact', href: '/contact' },
-    { label: 'Partners', href: '/partners' },
+    { label: 'Careers', href: '/careers' },
   ],
   legal: [
     { label: 'Privacy Policy', href: '/privacy' },
     { label: 'Terms of Service', href: '/terms' },
-    { label: 'Cookie Policy', href: '/cookies' },
   ],
 };
 
 const socialLinks = [
-  { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-  { icon: Github, href: 'https://github.com', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
+  { icon: Facebook, href: 'https://facebook.com', label: 'Facebook' },
+  { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
   { icon: Youtube, href: 'https://youtube.com', label: 'YouTube' },
+  { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
 ];
 
 export function Footer() {
@@ -43,12 +43,13 @@ export function Footer() {
           <div className="col-span-2 lg:col-span-1">
             <Link href="/" className="flex items-center space-x-2">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold">
-                CI
+                IPT
               </div>
-              <span className="font-bold">Computer Institute</span>
+              <span className="font-bold">Plus Technology
+Courses</span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground">
-              Learn to code. Get certified. Fast.
+              Your Gateway to Professional Computer Education & IT Career Success
             </p>
             <div className="mt-6 flex space-x-4">
               {socialLinks.map((social) => (
@@ -66,11 +67,11 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Product */}
+          {/* Courses */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold">Product</h3>
+            <h3 className="mb-4 text-sm font-semibold">Courses</h3>
             <ul className="space-y-3">
-              {footerLinks.product.map((link) => (
+              {footerLinks.courses.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -83,11 +84,11 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Programs */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold">Resources</h3>
+            <h3 className="mb-4 text-sm font-semibold">Programs</h3>
             <ul className="space-y-3">
-              {footerLinks.resources.map((link) => (
+              {footerLinks.programs.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -137,7 +138,8 @@ export function Footer() {
 
         <div className="mt-12 border-t pt-8">
           <p className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Computer Institute System. All rights reserved.
+            © {new Date().getFullYear()} Plus Technology
+Courses. All rights reserved.
           </p>
         </div>
       </div>

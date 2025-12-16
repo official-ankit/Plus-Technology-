@@ -15,94 +15,98 @@ import {
   Star,
   Clock,
   TrendingUp,
+  Monitor,
+  Palette,
+  Globe,
 } from 'lucide-react';
 
 const featuredCourses = [
   {
-    id: '1',
-    title: 'C++ Programming Fundamentals',
-    description: 'Master the fundamentals of C++ programming from scratch. Build a solid foundation for software development.',
-    image: '/courses/cpp.jpg',
-    instructor: 'Dr. Sarah Johnson',
-    rating: 4.8,
-    students: 2340,
-    duration: '40 hours',
-    level: 'Beginner',
-    price: 4999,
-    tags: ['C++', 'Programming', 'OOP'],
-  },
-  {
-    id: '2',
-    title: 'O-Level Computer Science',
-    description: 'Complete preparation for O-Level certification with comprehensive coverage of all topics.',
-    image: '/courses/olevel.jpg',
-    instructor: 'Prof. Michael Chen',
+    id: 'dca',
+    title: 'DCA – Diploma in Computer Application',
+    description: 'Comprehensive diploma covering MS Office, internet basics, programming fundamentals, and essential computer skills for job readiness.',
+    image: '/courses/dca.jpg',
+    instructor: 'Expert Faculty',
     rating: 4.9,
-    students: 1856,
-    duration: '120 hours',
-    level: 'Intermediate',
-    price: 12999,
-    tags: ['O-Level', 'Certification', 'Theory'],
+    students: 5200,
+    duration: '6 Months',
+    level: 'Beginner',
+    price: 8999,
+    tags: ['Diploma', 'Computer Basics', 'MS Office'],
   },
   {
-    id: '3',
-    title: 'Web Development Bootcamp',
-    description: 'Full-stack web development with HTML, CSS, JavaScript, React, and Node.js.',
-    image: '/courses/web.jpg',
-    instructor: 'Alex Rivera',
-    rating: 4.7,
-    students: 3120,
-    duration: '80 hours',
+    id: 'pgdca',
+    title: 'PGDCA – Post Graduate Diploma',
+    description: 'Advanced diploma for graduates covering programming, DBMS, web technologies, and software development concepts.',
+    image: '/courses/pgdca.jpg',
+    instructor: 'Expert Faculty',
+    rating: 4.8,
+    students: 3800,
+    duration: '1 Year',
+    level: 'Advanced',
+    price: 18999,
+    tags: ['PGDCA', 'Programming', 'Database'],
+  },
+  {
+    id: 'tally',
+    title: 'Tally Prime with GST',
+    description: 'Master Tally Prime for accounting, inventory management, GST filing, and financial reporting for business applications.',
+    image: '/courses/tally.jpg',
+    instructor: 'Expert Faculty',
+    rating: 4.9,
+    students: 4500,
+    duration: '3 Months',
     level: 'Beginner',
-    price: 7999,
-    tags: ['Web', 'JavaScript', 'React'],
+    price: 5999,
+    tags: ['Tally', 'GST', 'Accounting'],
   },
 ];
 
 const certifications = [
   {
-    name: 'O-Level (NIELIT)',
-    description: 'Foundation course equivalent to "A" level diploma in Computer Science',
+    name: 'DCA & ADCA',
+    description: 'Diploma and Advanced Diploma in Computer Applications for foundational to advanced IT skills',
     icon: Award,
   },
   {
-    name: 'A-Level (NIELIT)',
-    description: 'Advanced diploma equivalent to PGDCA in Computer Applications',
+    name: 'PGDCA',
+    description: 'Post Graduate Diploma in Computer Applications for career advancement in IT sector',
     icon: GraduationCap,
   },
   {
-    name: 'C/C++ Certification',
-    description: 'Industry-recognized certification in C and C++ programming',
-    icon: Code2,
+    name: 'Graphic & Web Design',
+    description: 'Professional diplomas in Graphic Designing (DGD) and Web Designing (DWD)',
+    icon: Palette,
   },
 ];
 
 const stats = [
-  { value: '10,000+', label: 'Students Trained' },
-  { value: '50+', label: 'Expert Instructors' },
-  { value: '100+', label: 'Courses Available' },
-  { value: '95%', label: 'Placement Rate' },
+  { value: '15,000+', label: 'Students Trained' },
+  { value: '25+', label: 'Expert Trainers' },
+  { value: '20+', label: 'Courses Offered' },
+  { value: '90%', label: 'Success Rate' },
 ];
 
 const testimonials = [
   {
     name: 'Priya Sharma',
-    role: 'Software Developer at TCS',
-    content: 'PlusTec helped me transition from a non-tech background to becoming a professional developer. The O-Level certification opened many doors for me.',
+    role: 'Accounts Executive at MNC',
+    content: 'Plus Technology
+Courses transformed my career. The Tally Prime course with GST helped me secure a job in a reputed company within months of completion.',
     avatar: '/avatars/priya.jpg',
     rating: 5,
   },
   {
     name: 'Rahul Verma',
-    role: 'Full Stack Developer',
-    content: 'The practical approach to teaching and industry-relevant curriculum made all the difference. I got placed within 2 months of completing my course.',
+    role: 'Web Developer',
+    content: 'The practical approach to teaching HTML, JavaScript, and web technologies made all the difference. The hands-on projects prepared me for real-world work.',
     avatar: '/avatars/rahul.jpg',
     rating: 5,
   },
   {
     name: 'Anita Patel',
-    role: 'Data Analyst at Infosys',
-    content: 'Excellent faculty and hands-on projects. The certification program gave me the confidence to crack interviews at top companies.',
+    role: 'Graphic Designer',
+    content: 'The Graphic Designing diploma covering Photoshop and CorelDRAW was excellent. The trainers were patient and the curriculum was industry-focused.',
     avatar: '/avatars/anita.jpg',
     rating: 5,
   },
@@ -117,16 +121,17 @@ export default function HomePage() {
           <div className="mx-auto max-w-4xl text-center">
             <Badge variant="secondary" className="mb-4">
               <TrendingUp className="mr-1 h-3 w-3" />
-              #1 Computer Training Institute
+              Professional Computer & IT Training Institute
             </Badge>
             <h1 className="mb-6 text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl">
-              Master Programming.
+              Plus Technology
+Courses
               <br />
-              <span className="text-primary">Earn Certifications.</span>
+              <span className="text-primary">Your Gateway to IT Success</span>
             </h1>
             <p className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground md:text-xl">
-              From C++ fundamentals to O-Level certification, we guide your journey 
-              into the world of technology with expert instructors and hands-on projects.
+              Transform your career with skill-based computer education. From Basic Computer courses 
+              to PGDCA, we prepare students, job seekers, and working professionals for the digital world.
             </p>
             
             {/* Search Bar */}
@@ -135,7 +140,7 @@ export default function HomePage() {
                 <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
                 <Input
                   type="search"
-                  placeholder="What do you want to learn? (e.g., C++, Web Development, O-Level)"
+                  placeholder="Search courses... (DCA, Tally, Python, Graphic Design)"
                   className="h-14 rounded-full pl-12 pr-4 text-base shadow-lg"
                 />
               </div>
@@ -144,7 +149,7 @@ export default function HomePage() {
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button size="lg" asChild>
                 <Link href="/courses">
-                  Browse Courses
+                  Explore All Courses
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -278,9 +283,10 @@ export default function HomePage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold md:text-4xl">Why Choose PlusTec?</h2>
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">Why Choose Plus Technology
+Courses?</h2>
             <p className="mx-auto max-w-2xl text-muted-foreground">
-              We combine expert instruction with practical learning to prepare you for real-world success.
+              We combine experienced trainers with practical, hands-on learning to prepare you for real-world success in the IT industry.
             </p>
           </div>
 
@@ -288,23 +294,23 @@ export default function HomePage() {
             {[
               {
                 icon: Users,
-                title: 'Expert Instructors',
-                description: 'Learn from industry professionals with years of teaching experience.',
+                title: 'Experienced Trainers',
+                description: 'Learn from industry professionals with years of teaching and practical experience.',
               },
               {
                 icon: BookOpen,
-                title: 'Practical Projects',
-                description: 'Build real-world projects to apply your knowledge and build your portfolio.',
+                title: 'Practical Learning',
+                description: 'Hands-on lab sessions and real-world projects to apply your knowledge immediately.',
               },
               {
                 icon: Award,
-                title: 'Recognized Certificates',
-                description: 'Earn industry and government-recognized certifications upon completion.',
+                title: 'Certification',
+                description: 'Receive recognized certificates upon successful completion of every course.',
               },
               {
                 icon: TrendingUp,
-                title: 'Placement Support',
-                description: 'Get career guidance and placement assistance for top companies.',
+                title: 'Career Guidance',
+                description: 'Get placement support and career counseling for government & private sector opportunities.',
               },
             ].map((feature) => (
               <div key={feature.title} className="text-center">
@@ -362,21 +368,23 @@ export default function HomePage() {
             <CardContent className="p-8 md:p-12">
               <div className="mx-auto max-w-2xl text-center">
                 <h2 className="mb-4 text-3xl font-bold md:text-4xl">
-                  Ready to Start Your Tech Journey?
+                  Start Your Journey with Plus Technology
+Courses
                 </h2>
                 <p className="mb-8 text-primary-foreground/80">
-                  Join thousands of successful students who have transformed their careers with PlusTec.
-                  Start learning today and unlock your potential.
+                  Join thousands of successful students who have transformed their careers. 
+                  From basic computer skills to advanced programming, we have a course for everyone.
+                  Affordable fees, flexible timings, and personalized mentoring await you.
                 </p>
                 <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                   <Button size="lg" variant="secondary" asChild>
                     <Link href="/signup">
                       <CheckCircle className="mr-2 h-4 w-4" />
-                      Get Started Free
+                      Enroll Now
                     </Link>
                   </Button>
                   <Button size="lg" variant="ghost" className="border border-primary-foreground/20" asChild>
-                    <Link href="/contact">Contact Admissions</Link>
+                    <Link href="/contact">Contact for Enquiry</Link>
                   </Button>
                 </div>
               </div>
