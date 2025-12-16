@@ -42,12 +42,11 @@ export function Navbar({ user }: NavbarProps) {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <nav className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2">
+        <Link href="/" className="flex items-center space-x-2 pr-10">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold">
             IPT
           </div>
-          <span className="hidden font-bold sm:inline-block">Plus Technology
-Courses</span>
+          <span className="hidden font-bold sm:inline-block">Plus Technology</span>
         </Link>
 
         {/* Desktop Navigation */}
