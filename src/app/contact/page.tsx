@@ -21,8 +21,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: 'Visit Us',
-    details: ['Plus Technology
-Courses', 'Near Main Market', 'Your City, State - PIN'],
+    details: ['Institute Plus Technology', 'Near Main Market', 'Your City, State - PIN'],
   },
   {
     icon: Phone,
@@ -43,8 +42,7 @@ Courses', 'Near Main Market', 'Your City, State - PIN'],
 
 const faqs = [
   {
-    question: 'How do I enroll in a course at Plus Technology
-Courses?',
+    question: 'How do I enroll in a course at Institute Plus Technology?',
     answer: 'You can enroll by visiting our institute during working hours, calling our admission helpline, or filling out the enquiry form on this page. Our counselors will guide you through the admission process.',
   },
   {
@@ -91,8 +89,7 @@ export default function ContactPage() {
             <MessageSquare className="mr-1 h-3 w-3" />
             Get in Touch
           </Badge>
-          <h1 className="mb-4 text-4xl font-bold md:text-5xl">Contact Plus Technology
-Courses</h1>
+          <h1 className="mb-4 text-4xl font-bold md:text-5xl">Contact Institute Plus Technology</h1>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
             Have questions about our courses or admissions? We&apos;re here to help.
             Visit our institute, call us, or fill out the enquiry form below. Our counselors will guide you in choosing the right course for your career goals.

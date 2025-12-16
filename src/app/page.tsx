@@ -91,8 +91,7 @@ const testimonials = [
   {
     name: 'Priya Sharma',
     role: 'Accounts Executive at MNC',
-    content: 'Plus Technology
-Courses transformed my career. The Tally Prime course with GST helped me secure a job in a reputed company within months of completion.',
+    content: 'Institute Plus Technology transformed my career. The Tally Prime course with GST helped me secure a job in a reputed company within months of completion.',
     avatar: '/avatars/priya.jpg',
     rating: 5,
   },
@@ -124,8 +123,7 @@ export default function HomePage() {
               Professional Computer & IT Training Institute
             </Badge>
             <h1 className="mb-6 text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl">
-              Plus Technology
-Courses
+              Institute Plus Technology
               <br />
               <span className="text-primary">Your Gateway to IT Success</span>
             </h1>
@@ -283,8 +281,7 @@ Courses
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold md:text-4xl">Why Choose Plus Technology
-Courses?</h2>
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">Why Choose Institute Plus Technology?</h2>
             <p className="mx-auto max-w-2xl text-muted-foreground">
               We combine experienced trainers with practical, hands-on learning to prepare you for real-world success in the IT industry.
             </p>
@@ -368,8 +365,7 @@ Courses?</h2>
             <CardContent className="p-8 md:p-12">
               <div className="mx-auto max-w-2xl text-center">
                 <h2 className="mb-4 text-3xl font-bold md:text-4xl">
-                  Start Your Journey with Plus Technology
-Courses
+                  Start Your Journey with Institute Plus Technology
                 </h2>
                 <p className="mb-8 text-primary-foreground/80">
                   Join thousands of successful students who have transformed their careers. 
