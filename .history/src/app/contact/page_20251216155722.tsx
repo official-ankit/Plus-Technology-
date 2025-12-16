@@ -26,7 +26,7 @@ const contactInfo = [
   {
     icon: Phone,
     title: 'Call Us',
-    details: ['+91 8433100329', '+91 8057591702'],
+    details: ['+91 8433100329', '+91 XXXXX XXXXX'],
   },
   {
     icon: Mail,
@@ -205,9 +205,9 @@ export default function ContactPage() {
                     <MapPin className="mx-auto mb-4 h-12 w-12 text-muted-foreground" />
                     <h3 className="mb-2 font-semibold">Find Us on Map</h3>
                     <p className="mb-4 text-sm text-muted-foreground">
-                      PlusTech Computer Institute<br />
-                      Kailsa Border, Behind Kailsa Railway Station<br />
-                      Amroha 244221, Uttar Pradesh
+                      PlusTec Computer Institute<br />
+                      123 Tech Park, Sector 5<br />
+                      New Delhi, 110001
                     </p>
                     <Button variant="outline" asChild>
                       <a

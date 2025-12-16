@@ -206,7 +206,7 @@ export default function ContactPage() {
                     <h3 className="mb-2 font-semibold">Find Us on Map</h3>
                     <p className="mb-4 text-sm text-muted-foreground">
                       PlusTech Computer Institute<br />
-                      Kailsa Border, Behind Kailsa Railway Station<br />
+                      Kailsa Border<br />
                       Amroha 244221, Uttar Pradesh
                     </p>
                     <Button variant="outline" asChild>
