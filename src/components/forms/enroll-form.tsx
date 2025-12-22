@@ -18,9 +18,9 @@ import {
   Phone, 
   GraduationCap, 
   CheckCircle, 
-  CreditCard,
   Shield,
-  ArrowRight 
+  ArrowRight,
+  AlertCircle
 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -35,6 +35,7 @@ export function EnrollForm({ courseName, coursePrice, originalPrice, trigger }: 
   const [step, setStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -44,10 +45,11 @@ export function EnrollForm({ courseName, coursePrice, originalPrice, trigger }: 
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setError(null);
   };
 
   const handleNextStep = () => {
-    if (step < 3) setStep(step + 1);
+    if (step < 2) setStep(step + 1);
   };
 
   const handlePrevStep = () => {
@@ -57,15 +59,39 @@ export function EnrollForm({ courseName, coursePrice, originalPrice, trigger }: 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setIsLoading(false);
-    setStep(4); // Success step
+    setError(null);
+    
+    try {
+      const response = await fetch('/api/send-enrollment-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          courseName,
+          coursePrice,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || 'Failed to send enrollment request');
+      }
+
+      setStep(3); // Success step
+    } catch (err) {
+      console.error('Enrollment error:', err);
+      setError(err instanceof Error ? err.message : 'Failed to submit enrollment request');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const resetForm = () => {
     setStep(1);
     setFormData({ fullName: '', email: '', phone: '', education: '' });
+    setError(null);
     setIsOpen(false);
   };
 
@@ -90,9 +116,9 @@ export function EnrollForm({ courseName, coursePrice, originalPrice, trigger }: 
         </DialogHeader>
 
         {/* Progress Steps */}
-        {step < 4 && (
+        {step < 3 && (
           <div className="flex items-center justify-center gap-2 py-4">
-            {[1, 2, 3].map((s) => (
+            {[1, 2].map((s) => (
               <div key={s} className="flex items-center">
                 <div
                   className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-medium ${
@@ -103,7 +129,7 @@ export function EnrollForm({ courseName, coursePrice, originalPrice, trigger }: 
                 >
                   {step > s ? <CheckCircle className="h-4 w-4" /> : s}
                 </div>
-                {s < 3 && (
+                {s < 2 && (
                   <div
                     className={`mx-2 h-1 w-8 rounded ${
                       step > s ? 'bg-primary' : 'bg-muted'
@@ -120,6 +146,12 @@ export function EnrollForm({ courseName, coursePrice, originalPrice, trigger }: 
           {step === 1 && (
             <div className="space-y-4">
               <h3 className="font-semibold">Personal Information</h3>
+              {error && (
+                <div className="flex items-center gap-2 rounded-lg bg-red-50 p-3 text-sm text-red-600">
+                  <AlertCircle className="h-4 w-4" />
+                  <span>{error}</span>
+                </div>
+              )}
               <div className="space-y-2">
                 <Label htmlFor="fullName">Full Name</Label>
                 <div className="relative">
@@ -193,10 +225,16 @@ export function EnrollForm({ courseName, coursePrice, originalPrice, trigger }: 
             </div>
           )}
 
-          {/* Step 2: Course Summary */}
+          {/* Step 2: Course Summary & Submit */}
           {step === 2 && (
             <div className="space-y-4">
-              <h3 className="font-semibold">Course Summary</h3>
+              <h3 className="font-semibold">Confirm Enrollment</h3>
+              {error && (
+                <div className="flex items-center gap-2 rounded-lg bg-red-50 p-3 text-sm text-red-600">
+                  <AlertCircle className="h-4 w-4" />
+                  <span>{error}</span>
+                </div>
+              )}
               <Card>
                 <CardContent className="p-4">
                   <div className="flex items-start gap-4">
@@ -235,73 +273,15 @@ export function EnrollForm({ courseName, coursePrice, originalPrice, trigger }: 
                   </div>
                 </CardContent>
               </Card>
+
+              <div className="rounded-lg bg-blue-50 p-4 text-sm text-blue-900">
+                <p className="font-medium mb-1">📧 What happens next?</p>
+                <p>Our team will contact you shortly to complete the enrollment process and provide payment details.</p>
+              </div>
+
               <div className="flex items-center gap-2 rounded-lg bg-primary/5 p-3 text-sm">
                 <Shield className="h-4 w-4 text-primary" />
                 <span>30-day money-back guarantee</span>
-              </div>
-              <div className="flex gap-3">
-                <Button type="button" variant="outline" className="flex-1" onClick={handlePrevStep}>
-                  Back
-                </Button>
-                <Button type="button" className="flex-1" onClick={handleNextStep}>
-                  Proceed to Payment
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </div>
-            </div>
-          )}
-
-          {/* Step 3: Payment */}
-          {step === 3 && (
-            <div className="space-y-4">
-              <h3 className="font-semibold">Payment Details</h3>
-              <div className="space-y-2">
-                <Label htmlFor="cardName">Name on Card</Label>
-                <Input
-                  id="cardName"
-                  type="text"
-                  placeholder="John Doe"
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="cardNumber">Card Number</Label>
-                <div className="relative">
-                  <CreditCard className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                  <Input
-                    id="cardNumber"
-                    type="text"
-                    placeholder="1234 5678 9012 3456"
-                    className="pl-10"
-                    required
-                  />
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="expiry">Expiry Date</Label>
-                  <Input
-                    id="expiry"
-                    type="text"
-                    placeholder="MM/YY"
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="cvv">CVV</Label>
-                  <Input
-                    id="cvv"
-                    type="text"
-                    placeholder="123"
-                    required
-                  />
-                </div>
-              </div>
-              <div className="rounded-lg bg-muted p-3 text-center text-sm">
-                <div className="flex items-center justify-center gap-2 text-muted-foreground">
-                  <Shield className="h-4 w-4" />
-                  Secure payment powered by SSL encryption
-                </div>
               </div>
               <div className="flex gap-3">
                 <Button type="button" variant="outline" className="flex-1" onClick={handlePrevStep}>
@@ -311,11 +291,12 @@ export function EnrollForm({ courseName, coursePrice, originalPrice, trigger }: 
                   {isLoading ? (
                     <span className="flex items-center gap-2">
                       <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
-                      Processing...
+                      Submitting...
                     </span>
                   ) : (
                     <>
-                      Pay ₹{coursePrice.toLocaleString()}
+                      Submit Request
+                      <ArrowRight className="ml-2 h-4 w-4" />
                     </>
                   )}
                 </Button>
@@ -323,23 +304,22 @@ export function EnrollForm({ courseName, coursePrice, originalPrice, trigger }: 
             </div>
           )}
 
-          {/* Step 4: Success */}
-          {step === 4 && (
+          {/* Step 3: Success */}
+          {step === 3 && (
             <div className="py-6 text-center">
               <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
                 <CheckCircle className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="mb-2 text-xl font-semibold">Enrollment Successful!</h3>
+              <h3 className="mb-2 text-xl font-semibold">Request Submitted Successfully!</h3>
               <p className="mb-6 text-muted-foreground">
-                Welcome to {courseName}! You can now start learning.
+                Thank you for your interest in {courseName}! Our team will contact you shortly at <strong>{formData.email}</strong> to complete your enrollment.
               </p>
               <div className="space-y-3">
                 <Button className="w-full" onClick={resetForm}>
-                  Start Learning
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  Browse More Courses
                 </Button>
                 <Button variant="outline" className="w-full" onClick={resetForm}>
-                  Back to Course
+                  Close
                 </Button>
               </div>
             </div>

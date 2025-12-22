@@ -1,5 +1,6 @@
 'use client';
 
+import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -14,7 +15,6 @@ import {
   Award,
   PlayCircle,
   FileText,
-  Download,
   CheckCircle,
   ChevronRight,
   Globe,
@@ -24,149 +24,8 @@ import {
   Video,
   Code,
 } from 'lucide-react';
-
-// This would come from your database
-const course = {
-  id: '1',
-  title: 'C++ Programming Fundamentals',
-  subtitle: 'Master the fundamentals of C++ programming from scratch. Build a solid foundation for software development and prepare for technical interviews.',
-  description: `Learn C++ from the ground up in this comprehensive course designed for absolute beginners. 
-  
-  This course covers everything you need to know to become proficient in C++ programming, from basic syntax and data types to advanced concepts like object-oriented programming, templates, and the Standard Template Library (STL).
-
-  By the end of this course, you will be able to:
-  - Write clean, efficient C++ code
-  - Understand and apply object-oriented programming principles
-  - Work with pointers, references, and memory management
-  - Use the Standard Template Library effectively
-  - Solve complex programming problems
-  - Prepare for technical interviews at top companies`,
-  instructor: {
-    name: 'Dr. Sarah Johnson',
-    title: 'Senior Software Engineer & Educator',
-    avatar: '/avatars/instructor.jpg',
-    bio: 'Dr. Sarah Johnson has over 15 years of experience in software development and teaching. She has worked at Microsoft and Google, and now dedicates her time to helping aspiring developers.',
-    rating: 4.9,
-    students: 45000,
-    courses: 12,
-  },
-  rating: 4.8,
-  ratingsCount: 2340,
-  students: 12500,
-  duration: '40 hours',
-  lectures: 156,
-  level: 'Beginner',
-  price: 4999,
-  originalPrice: 7999,
-  discount: 37,
-  language: 'English',
-  lastUpdated: 'December 2024',
-  tags: ['C++', 'Programming', 'OOP', 'Data Structures'],
-  category: 'Programming Languages',
-  isBestseller: true,
-  features: [
-    '40 hours of on-demand video',
-    '156 lectures and exercises',
-    '45 coding assignments',
-    '12 hands-on projects',
-    'Certificate of completion',
-    'Lifetime access',
-    'Mobile and TV access',
-    'Full lifetime access',
-  ],
-  whatYouWillLearn: [
-    'Write clean and efficient C++ code from scratch',
-    'Understand object-oriented programming concepts',
-    'Master pointers, references, and memory management',
-    'Work with the Standard Template Library (STL)',
-    'Implement common data structures and algorithms',
-    'Debug and optimize C++ programs',
-    'Prepare for technical interviews at top companies',
-    'Build real-world projects to add to your portfolio',
-  ],
-  requirements: [
-    'No prior programming experience required',
-    'A computer (Windows, Mac, or Linux)',
-    'Willingness to learn and practice',
-  ],
-  modules: [
-    {
-      id: '1',
-      title: 'Getting Started with C++',
-      duration: '2h 30m',
-      lessons: [
-        { id: '1-1', title: 'Welcome to the Course', duration: '5m', type: 'video', isPreview: true },
-        { id: '1-2', title: 'Setting Up Your Development Environment', duration: '15m', type: 'video', isPreview: true },
-        { id: '1-3', title: 'Your First C++ Program', duration: '20m', type: 'video' },
-        { id: '1-4', title: 'Understanding the Build Process', duration: '15m', type: 'video' },
-        { id: '1-5', title: 'Quiz: Getting Started', duration: '10m', type: 'quiz' },
-        { id: '1-6', title: 'Coding Exercise: Hello World Variations', duration: '25m', type: 'exercise' },
-      ],
-    },
-    {
-      id: '2',
-      title: 'Variables, Data Types, and Operators',
-      duration: '4h 15m',
-      lessons: [
-        { id: '2-1', title: 'Introduction to Variables', duration: '20m', type: 'video' },
-        { id: '2-2', title: 'Primitive Data Types', duration: '35m', type: 'video' },
-        { id: '2-3', title: 'Type Conversion and Casting', duration: '25m', type: 'video' },
-        { id: '2-4', title: 'Arithmetic Operators', duration: '30m', type: 'video' },
-        { id: '2-5', title: 'Comparison and Logical Operators', duration: '25m', type: 'video' },
-        { id: '2-6', title: 'Assignment and Compound Operators', duration: '20m', type: 'video' },
-        { id: '2-7', title: 'Quiz: Variables and Operators', duration: '15m', type: 'quiz' },
-        { id: '2-8', title: 'Project: Simple Calculator', duration: '45m', type: 'project' },
-      ],
-    },
-    {
-      id: '3',
-      title: 'Control Flow and Loops',
-      duration: '3h 45m',
-      lessons: [
-        { id: '3-1', title: 'If-Else Statements', duration: '25m', type: 'video' },
-        { id: '3-2', title: 'Switch Statements', duration: '20m', type: 'video' },
-        { id: '3-3', title: 'For Loops', duration: '30m', type: 'video' },
-        { id: '3-4', title: 'While and Do-While Loops', duration: '25m', type: 'video' },
-        { id: '3-5', title: 'Nested Loops', duration: '20m', type: 'video' },
-        { id: '3-6', title: 'Break and Continue', duration: '15m', type: 'video' },
-        { id: '3-7', title: 'Quiz: Control Flow', duration: '15m', type: 'quiz' },
-        { id: '3-8', title: 'Project: Number Guessing Game', duration: '45m', type: 'project' },
-      ],
-    },
-    {
-      id: '4',
-      title: 'Functions and Scope',
-      duration: '4h 00m',
-      lessons: [
-        { id: '4-1', title: 'Defining and Calling Functions', duration: '30m', type: 'video' },
-        { id: '4-2', title: 'Function Parameters and Return Types', duration: '25m', type: 'video' },
-        { id: '4-3', title: 'Default Parameters and Overloading', duration: '30m', type: 'video' },
-        { id: '4-4', title: 'Variable Scope and Lifetime', duration: '25m', type: 'video' },
-        { id: '4-5', title: 'Recursion', duration: '35m', type: 'video' },
-        { id: '4-6', title: 'Inline Functions', duration: '15m', type: 'video' },
-        { id: '4-7', title: 'Quiz: Functions', duration: '15m', type: 'quiz' },
-        { id: '4-8', title: 'Project: Math Library', duration: '50m', type: 'project' },
-      ],
-    },
-    {
-      id: '5',
-      title: 'Object-Oriented Programming',
-      duration: '6h 30m',
-      lessons: [
-        { id: '5-1', title: 'Introduction to OOP', duration: '25m', type: 'video' },
-        { id: '5-2', title: 'Classes and Objects', duration: '40m', type: 'video' },
-        { id: '5-3', title: 'Constructors and Destructors', duration: '35m', type: 'video' },
-        { id: '5-4', title: 'Access Modifiers', duration: '25m', type: 'video' },
-        { id: '5-5', title: 'Encapsulation', duration: '30m', type: 'video' },
-        { id: '5-6', title: 'Inheritance', duration: '45m', type: 'video' },
-        { id: '5-7', title: 'Polymorphism', duration: '40m', type: 'video' },
-        { id: '5-8', title: 'Abstract Classes and Interfaces', duration: '35m', type: 'video' },
-        { id: '5-9', title: 'Quiz: OOP Concepts', duration: '20m', type: 'quiz' },
-        { id: '5-10', title: 'Project: Banking System', duration: '60m', type: 'project' },
-      ],
-    },
-  ],
-};
+import { getCourseById } from '@/lib/courses-data';
+import { useEffect, useState } from 'react';
 
 function getLessonIcon(type: string) {
   switch (type) {
@@ -183,7 +42,31 @@ function getLessonIcon(type: string) {
   }
 }
 
-export default function CourseDetailPage({ params }: { params: { id: string } }) {
+export default function CourseDetailPage() {
+  const params = useParams();
+  const courseId = params.id as string;
+  const [course, setCourse] = useState(getCourseById(courseId));
+
+  useEffect(() => {
+    const courseData = getCourseById(courseId);
+    setCourse(courseData);
+  }, [courseId]);
+
+  if (!course) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-3xl font-bold mb-4">Course Not Found</h1>
+          <p className="text-muted-foreground mb-6">The course you're looking for doesn't exist.</p>
+          <Button asChild>
+            <Link href="/courses">Browse All Courses</Link>
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+
   const totalLessons = course.modules.reduce((acc, mod) => acc + mod.lessons.length, 0);
 
   return (
