@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
+import OpeningAnnouncement from '@/components/ui/opening-announcement';
 import {
   Search,
   GraduationCap,
@@ -114,6 +115,9 @@ const testimonials = [
 export default function HomePage() {
   return (
     <div className="flex flex-col">
+      {/* Opening Announcement Popup */}
+      <OpeningAnnouncement />
+      
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-b from-background to-muted/20 py-20 md:py-32">
         <div className="container mx-auto px-4">
