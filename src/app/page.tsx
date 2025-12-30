@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import OpeningAnnouncement from '@/components/ui/opening-announcement';
+import CountdownPopup from '@/components/ui/countdown-popup';
 import {
   Search,
   GraduationCap,
@@ -115,6 +116,9 @@ const testimonials = [
 export default function HomePage() {
   return (
     <div className="flex flex-col">
+      {/* Countdown Popup */}
+      <CountdownPopup />
+      
       {/* Opening Announcement Popup */}
       <OpeningAnnouncement />
       
