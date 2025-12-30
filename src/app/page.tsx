@@ -119,9 +119,6 @@ export default function HomePage() {
       {/* Countdown Popup */}
       <CountdownPopup />
       
-      {/* Opening Announcement Popup */}
-      <OpeningAnnouncement />
-      
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-b from-background to-muted/20 py-20 md:py-32">
         <div className="container mx-auto px-4">
