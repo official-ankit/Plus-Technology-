@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Github, Twitter, Linkedin, Youtube, Facebook, Instagram } from 'lucide-react';
 
 const footerLinks = {
@@ -42,11 +43,10 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2 lg:col-span-1">
             <Link href="/" className="flex items-center space-x-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold">
-                IPT
+              <div className="flex h-8 w-8 items-center justify-center text-primary">
+                <Image src="/logo.svg" alt="Plus Technology" width={32} height={32} className="h-8 w-8" />
               </div>
-              <span className="font-bold">Plus Technology
-Courses</span>
+              <span className="font-bold">Plus Technology</span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground">
               Your Gateway to Professional Computer Education & IT Career Success
