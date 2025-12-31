@@ -1,11 +1,12 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Search, Menu, X, User, LogOut, Settings, BookOpen, Award, LayoutDashboard } from 'lucide-react';
+import { Menu, X, LogOut, Settings, BookOpen, Award, LayoutDashboard } from 'lucide-react';
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   DropdownMenu,
@@ -36,15 +37,14 @@ const navItems = [
 export function Navbar({ user }: NavbarProps) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <nav className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2 pr-10">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold">
-            IPT
+          <div className="flex h-8 w-8 items-center justify-center text-primary">
+            <Image src="/logo.svg" alt="Plus Technology" width={32} height={32} className="h-8 w-8" />
           </div>
           <span className="hidden font-bold sm:inline-block">Plus Technology</span>
         </Link>
@@ -56,8 +56,10 @@ export function Navbar({ user }: NavbarProps) {
               key={item.href}
               href={item.href}
               className={cn(
-                'text-sm font-medium transition-colors hover:text-primary',
-                pathname === item.href ? 'text-primary' : 'text-muted-foreground'
+                'relative text-sm font-medium transition-colors hover:text-primary py-1',
+                pathname === item.href ? 'text-primary' : 'text-muted-foreground',
+                'after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full',
+                pathname === item.href && 'after:w-full'
               )}
             >
               {item.label}
@@ -65,33 +67,8 @@ export function Navbar({ user }: NavbarProps) {
           ))}
         </div>
 
-        {/* Search Bar */}
-        <div className="hidden md:flex md:flex-1 md:justify-center md:px-8">
-          <div className="relative w-full max-w-md">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input
-              type="search"
-              placeholder="Search courses, topics..."
-              className="w-full pl-10 pr-4"
-            />
-            <kbd className="pointer-events-none absolute right-3 top-1/2 hidden h-5 -translate-y-1/2 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
-              <span className="text-xs">⌘</span>K
-            </kbd>
-          </div>
-        </div>
-
         {/* Right Section */}
         <div className="flex items-center space-x-4">
-          {/* Mobile Search Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setSearchOpen(!searchOpen)}
-          >
-            <Search className="h-5 w-5" />
-          </Button>
-
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -166,47 +143,70 @@ export function Navbar({ user }: NavbarProps) {
         </div>
       </nav>
 
-      {/* Mobile Search */}
-      {searchOpen && (
-        <div className="border-t p-4 md:hidden">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input type="search" placeholder="Search courses, topics..." className="w-full pl-10" />
-          </div>
-        </div>
-      )}
-
       {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="border-t md:hidden">
-          <div className="space-y-1 px-4 py-3">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  'block rounded-md px-3 py-2 text-base font-medium',
-                  pathname === item.href
-                    ? 'bg-primary/10 text-primary'
-                    : 'text-muted-foreground hover:bg-muted'
-                )}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-            {!user && (
-              <Link
-                href="/signin"
-                className="block rounded-md px-3 py-2 text-base font-medium text-muted-foreground hover:bg-muted"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Sign in
-              </Link>
-            )}
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div 
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="border-t overflow-hidden md:hidden"
+          >
+            <motion.div 
+              className="space-y-1 px-4 py-3"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.05, delayChildren: 0.1 }
+                }
+              }}
+            >
+              {navItems.map((item) => (
+                <motion.div
+                  key={item.href}
+                  variants={{
+                    hidden: { opacity: 0, x: -10 },
+                    visible: { opacity: 1, x: 0 }
+                  }}
+                >
+                  <Link
+                    href={item.href}
+                    className={cn(
+                      'block rounded-md px-3 py-2 text-base font-medium transition-colors',
+                      pathname === item.href
+                        ? 'bg-primary/10 text-primary'
+                        : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                    )}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
+              ))}
+              {!user && (
+                <motion.div
+                  variants={{
+                    hidden: { opacity: 0, x: -10 },
+                    visible: { opacity: 1, x: 0 }
+                  }}
+                >
+                  <Link
+                    href="/signin"
+                    className="block rounded-md px-3 py-2 text-base font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Sign in
+                  </Link>
+                </motion.div>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
