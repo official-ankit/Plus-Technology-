@@ -41,7 +41,7 @@ const featuredCourses = [
     id: 'dca',
     title: 'DCA – Diploma in Computer Application',
     description: 'Comprehensive diploma covering MS Office, internet basics, programming fundamentals, and essential computer skills for job readiness.',
-    image: '/courses/dca.jpg',
+    image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&q=80',
     instructor: 'Expert Faculty',
     rating: 4.9,
     students: 5200,
@@ -54,7 +54,7 @@ const featuredCourses = [
     id: 'pgdca',
     title: 'PGDCA – Post Graduate Diploma',
     description: 'Advanced diploma for graduates covering programming, DBMS, web technologies, and software development concepts.',
-    image: '/courses/pgdca.jpg',
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80',
     instructor: 'Expert Faculty',
     rating: 4.8,
     students: 3800,
@@ -67,7 +67,7 @@ const featuredCourses = [
     id: 'tally',
     title: 'Tally Prime with GST',
     description: 'Master Tally Prime for accounting, inventory management, GST filing, and financial reporting for business applications.',
-    image: '/courses/tally.jpg',
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80',
     instructor: 'Expert Faculty',
     rating: 4.9,
     students: 4500,
@@ -329,6 +329,13 @@ export default function HomePage() {
                 <HoverCard>
                   <Card className="group overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-primary/20 card-animated">
                     <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 relative overflow-hidden">
+                      {course.image && (
+                        <img
+                          src={course.image}
+                          alt={course.title}
+                          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                      )}
                       <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
                     <CardHeader>
