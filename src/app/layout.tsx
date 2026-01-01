@@ -7,7 +7,7 @@ import { Footer } from '@/components/layout/footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'PlusTech - Computer Institute',
+  title: 'Plus Technology Institute',
   description:
     'Master programming and earn industry-recognized certifications. From beginner to professional, we guide your tech journey.',
   keywords: [
@@ -19,9 +19,9 @@ export const metadata: Metadata = {
     'coding bootcamp',
     'software development',
   ],
-  authors: [{ name: 'PlusTech Institute' }],
+  authors: [{ name: 'Plus Technology Institute' }],
   openGraph: {
-    title: 'PlusTech - Computer Institute',
+    title: 'Plus Technology Institute',
     description:
       'Master programming and earn industry-recognized certifications.',
     type: 'website',

@@ -197,28 +197,38 @@ export default function ContactPage() {
               </CardContent>
             </Card>
 
-            {/* Map Placeholder */}
+            {/* Map */}
             <Card>
+              <CardHeader>
+                <CardTitle>Find Us on Map</CardTitle>
+                <CardDescription>
+                  Plus Technology Institute, Kailsa Border, Behind Kailsa Railway Station, Amroha 244221
+                </CardDescription>
+              </CardHeader>
               <CardContent className="p-0">
-                <div className="aspect-square w-full bg-muted flex items-center justify-center rounded-lg">
-                  <div className="text-center p-8">
-                    <MapPin className="mx-auto mb-4 h-12 w-12 text-muted-foreground" />
-                    <h3 className="mb-2 font-semibold">Find Us on Map</h3>
-                    <p className="mb-4 text-sm text-muted-foreground">
-                      PlusTech Computer Institute<br />
-                      Kailsa Border, Behind Kailsa Railway Station<br />
-                      Amroha 244221, Uttar Pradesh
-                    </p>
-                    <Button variant="outline" asChild>
-                      <a
-                        href="https://maps.google.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Open in Google Maps
-                      </a>
-                    </Button>
-                  </div>
+                <div className="aspect-square w-full overflow-hidden rounded-b-lg">
+                  <iframe
+                    src="https://www.google.com/maps?q=28.88805,78.46417&output=embed"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Plus Technology Institute Location"
+                  />
+                </div>
+                <div className="p-4 border-t">
+                  <Button variant="outline" className="w-full" asChild>
+                    <a
+                      href="https://maps.app.goo.gl/aEqXmTYVUHeWdaCg6"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <MapPin className="mr-2 h-4 w-4" />
+                      Open in Google Maps
+                    </a>
+                  </Button>
                 </div>
               </CardContent>
             </Card>
