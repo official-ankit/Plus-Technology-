@@ -181,8 +181,8 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col">
-      {/* Countdown Popup */}
-      <CountdownPopup />
+      {/* <CountdownPopup /> */}
+     <OpeningAnnouncement />
       
       {/* Hero Section */}
       <section className="relative overflow-hidden py-20 md:py-32">

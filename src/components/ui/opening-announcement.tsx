@@ -9,20 +9,14 @@ export default function OpeningAnnouncement() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Check if user has seen the announcement
-    const hasSeenAnnouncement = localStorage.getItem('hasSeenOpeningAnnouncement');
-    
-    if (!hasSeenAnnouncement) {
-      // Show popup after a short delay for better UX
-      setTimeout(() => {
-        setIsVisible(true);
-      }, 1000);
-    }
+    // Show popup after a short delay for better UX on every page load
+    setTimeout(() => {
+      setIsVisible(true);
+    }, 1000);
   }, []);
 
   const handleClose = () => {
     setIsVisible(false);
-    localStorage.setItem('hasSeenOpeningAnnouncement', 'true');
   };
 
   const handleGetStarted = () => {
@@ -50,7 +44,7 @@ export default function OpeningAnnouncement() {
           <div className="relative flex items-center justify-between border-b border-white/20 bg-primary/50 px-3 py-2.5 backdrop-blur-sm md:px-4 md:py-3">
             <div className="flex items-center gap-2">
               <PartyPopper className="h-4 w-4 animate-bounce text-white md:h-5 md:w-5" />
-              <h3 className="text-xs font-bold text-white md:text-sm">Grand Opening!</h3>
+              <h3 className="text-xs font-bold text-white md:text-sm">🎉 We're Open Now! 🎉</h3>
             </div>
             {/* Close Button - Always visible */}
             <button
@@ -69,10 +63,10 @@ export default function OpeningAnnouncement() {
               {/* Main Heading */}
               <div className="space-y-1">
                 <h2 className="text-xl font-bold md:text-2xl">
-                  We're Opening Soon!
+                  Plus Technology Is Now Open! 🎊
                 </h2>
                 <p className="text-xs text-white/90">
-                  🎉 Exclusive Launch Offers 🎉
+                  🚀 Limited Time Opening Day Offers! 🚀
                 </p>
               </div>
 
@@ -81,22 +75,22 @@ export default function OpeningAnnouncement() {
                 {/* Offer 1 */}
                 <div className="rounded-lg bg-white/10 p-2.5 backdrop-blur transition-all hover:bg-white/20">
                   <Gift className="mx-auto mb-1 h-5 w-5 md:h-6 md:w-6" />
-                  <div className="text-lg font-bold md:text-xl">₹0</div>
-                  <div className="text-xs text-white/90">Admission</div>
+                  <div className="text-lg font-bold md:text-xl">FREE</div>
+                  <div className="text-xs text-white/90">Admission Fee</div>
                 </div>
 
                 {/* Offer 2 */}
                 <div className="rounded-lg bg-white/10 p-2.5 backdrop-blur transition-all hover:bg-white/20">
                   <GraduationCap className="mx-auto mb-1 h-5 w-5 md:h-6 md:w-6" />
-                  <div className="text-lg font-bold md:text-xl">20% OFF</div>
-                  <div className="text-xs text-white/90">All Courses</div>
+                  <div className="text-lg font-bold md:text-xl">25% OFF</div>
+                  <div className="text-xs text-white/90">First 50 Students</div>
                 </div>
               </div>
 
               {/* Description */}
               <div className="mx-auto max-w-xs rounded-lg bg-white/10 p-2.5 backdrop-blur">
                 <p className="text-xs leading-relaxed text-white/95">
-                  Start your IT career with Plus Technology Institute!
+                  🎉 We're officially open today! Enroll now and kickstart your IT career with exclusive opening day benefits. Limited spots available!
                 </p>
               </div>
             </div>

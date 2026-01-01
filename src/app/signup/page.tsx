@@ -36,7 +36,7 @@ export default function SignUpPage() {
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
               <GraduationCap className="h-6 w-6 text-primary-foreground" />
             </div>
-            <span className="text-xl font-bold">PlusTech</span>
+            <span className="text-xl font-bold">Plus Technology Institute</span>
           </Link>
           <CardTitle className="text-2xl">Create an account</CardTitle>
           <CardDescription>Start your learning journey today</CardDescription>
