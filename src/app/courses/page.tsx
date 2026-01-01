@@ -40,6 +40,7 @@ const courses = [
     level: 'Beginner',
     price: 2999,
     originalPrice: 4999,
+    image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&q=80',
     tags: ['Computer Basics', 'Windows', 'MS Office'],
     category: 'Foundation Courses',
     isBestseller: true,
@@ -56,6 +57,7 @@ const courses = [
     level: 'Intermediate',
     price: 10999,
     originalPrice: 15999,
+    image: 'https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=800&q=80',
     tags: ['Kotlin', 'Java'],
     category: 'Mobile Development',
     isBestseller: true,
@@ -71,6 +73,7 @@ const courses = [
     level: 'Intermediate',
     price: 12999,
     originalPrice: 18999,
+    image: 'https://images.unsplash.com/photo-1621768216002-5ac171876625?w=800&q=80',
     tags: ['iOS', 'Swift', 'SwiftUI', 'UIKit'],
     category: 'Mobile Development',
     isBestseller: true,
@@ -86,6 +89,7 @@ const courses = [
     level: 'Intermediate',
     price: 9999,
     originalPrice: 14999,
+    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80',
     tags: ['React Native', 'TypeScript', 'Cross Platform'],
     category: 'Mobile Development',
     isBestseller: false,
@@ -101,6 +105,7 @@ const courses = [
     level: 'Beginner',
     price: 9499,
     originalPrice: 13999,
+    image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80',
     tags: ['Flutter', 'Dart', 'Firebase'],
     category: 'Mobile Development',
     isBestseller: false,
@@ -116,6 +121,7 @@ const courses = [
     level: 'Beginner',
     price: 7999,
     originalPrice: 11999,
+    image: 'https://images.unsplash.com/photo-1526498460520-4c246339dccb?w=800&q=80',
     tags: ['Ionic', 'Capacitor', 'Hybrid'],
     category: 'Mobile Development',
     isBestseller: false,
@@ -131,6 +137,7 @@ const courses = [
     level: 'Beginner',
     price: 1999,
     originalPrice: 3499,
+    image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&q=80',
     tags: ['Typing', 'Hindi', 'English'],
     category: 'Foundation Courses',
     isBestseller: true,
@@ -147,6 +154,7 @@ const courses = [
     level: 'Beginner',
     price: 8999,
     originalPrice: 12999,
+    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80',
     tags: ['Diploma', 'MS Office', 'Programming'],
     category: 'Diploma Courses',
     isBestseller: true,
@@ -162,6 +170,7 @@ const courses = [
     level: 'Intermediate',
     price: 14999,
     originalPrice: 21999,
+    image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80',
     tags: ['Advanced Diploma', 'Programming', 'Web Development'],
     category: 'Diploma Courses',
     isBestseller: true,
@@ -177,6 +186,7 @@ const courses = [
     level: 'Advanced',
     price: 18999,
     originalPrice: 27999,
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80',
     tags: ['PGDCA', 'Software Engineering', 'DBMS'],
     category: 'Diploma Courses',
     isBestseller: false,
@@ -193,6 +203,7 @@ const courses = [
     level: 'Beginner',
     price: 12999,
     originalPrice: 18999,
+    image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&q=80',
     tags: ['Graphic Design', 'Photoshop', 'CorelDRAW'],
     category: 'Design Courses',
     isBestseller: true,
@@ -208,6 +219,7 @@ const courses = [
     level: 'Beginner',
     price: 12999,
     originalPrice: 18999,
+    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80',
     tags: ['Web Design', 'HTML', 'CSS', 'JavaScript'],
     category: 'Design Courses',
     isBestseller: false,
@@ -224,6 +236,7 @@ const courses = [
     level: 'Intermediate',
     price: 9999,
     originalPrice: 14999,
+    image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80',
     tags: ['Teaching', 'Computer Education', 'Training'],
     category: 'Professional Courses',
     isBestseller: false,
@@ -239,6 +252,7 @@ const courses = [
     level: 'Beginner',
     price: 5999,
     originalPrice: 8999,
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80',
     tags: ['Tally', 'GST', 'Accounting'],
     category: 'Professional Courses',
     isBestseller: true,
@@ -254,6 +268,7 @@ const courses = [
     level: 'Intermediate',
     price: 4999,
     originalPrice: 7499,
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
     tags: ['Excel', 'VBA', 'Data Analysis'],
     category: 'Professional Courses',
     isBestseller: true,
@@ -270,6 +285,7 @@ const courses = [
     level: 'Beginner',
     price: 4999,
     originalPrice: 7499,
+    image: 'https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=800&q=80',
     tags: ['Photoshop', 'Photo Editing', 'Design'],
     category: 'Design Software',
     isBestseller: false,
@@ -285,6 +301,7 @@ const courses = [
     level: 'Beginner',
     price: 4999,
     originalPrice: 7499,
+    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80',
     tags: ['CorelDRAW', 'Vector Graphics', 'Logo Design'],
     category: 'Design Software',
     isBestseller: false,
@@ -301,6 +318,7 @@ const courses = [
     level: 'Beginner',
     price: 2499,
     originalPrice: 3999,
+    image: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&q=80',
     tags: ['HTML', 'HTML5', 'Web Development'],
     category: 'Web Technologies',
     isBestseller: false,
@@ -317,6 +335,7 @@ const courses = [
     level: 'Beginner',
     price: 4999,
     originalPrice: 7499,
+    image: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800&q=80',
     tags: ['C Language', 'Programming', 'Fundamentals'],
     category: 'Programming Languages',
     isBestseller: false,
@@ -332,6 +351,7 @@ const courses = [
     level: 'Intermediate',
     price: 5999,
     originalPrice: 8999,
+    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80',
     tags: ['C++', 'OOP', 'Programming'],
     category: 'Programming Languages',
     isBestseller: false,
@@ -347,6 +367,7 @@ const courses = [
     level: 'Beginner',
     price: 5999,
     originalPrice: 8999,
+    image: 'https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=800&q=80',
     tags: ['Python', 'Programming', 'Data Science'],
     category: 'Programming Languages',
     isBestseller: true,
@@ -362,6 +383,7 @@ const courses = [
     level: 'Intermediate',
     price: 6999,
     originalPrice: 10999,
+    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80',
     tags: ['Java', 'OOP', 'Enterprise'],
     category: 'Programming Languages',
     isBestseller: false,
@@ -377,8 +399,89 @@ const courses = [
     level: 'Intermediate',
     price: 5999,
     originalPrice: 8999,
+    image: 'https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=800&q=80',
     tags: ['JavaScript', 'Web Development', 'ES6'],
     category: 'Programming Languages',
+    isBestseller: false,
+  },
+  {
+    id: 'typescript',
+    title: 'TypeScript Programming',
+    description: 'Learn TypeScript for type-safe JavaScript development. Master types, interfaces, generics, decorators, and modern TypeScript patterns.',
+    instructor: 'Plus Technology Institute',
+    rating: 4.8,
+    students: 2400,
+    duration: '2 Months',
+    level: 'Intermediate',
+    price: 5499,
+    originalPrice: 8499,
+    image: 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&q=80',
+    tags: ['TypeScript', 'JavaScript', 'Type Safety'],
+    category: 'Programming Languages',
+    isBestseller: false,
+  },
+  {
+    id: 'csharp',
+    title: 'C# Programming',
+    description: 'Master C# programming with .NET framework. Learn OOP, LINQ, async programming, ASP.NET basics, and Windows application development.',
+    instructor: 'Plus Technology Institute',
+    rating: 4.7,
+    students: 2200,
+    duration: '4 Months',
+    level: 'Intermediate',
+    price: 7499,
+    originalPrice: 11999,
+    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80',
+    tags: ['C#', '.NET', 'OOP'],
+    category: 'Programming Languages',
+    isBestseller: false,
+  },
+  {
+    id: 'php',
+    title: 'PHP (Laravel, CodeIgniter)',
+    description: 'Learn PHP web development with popular frameworks Laravel and CodeIgniter. Master MVC architecture, database integration, and modern PHP practices.',
+    instructor: 'Plus Technology Institute',
+    rating: 4.8,
+    students: 3100,
+    duration: '4 Months',
+    level: 'Intermediate',
+    price: 7999,
+    originalPrice: 12999,
+    image: 'https://images.unsplash.com/photo-1599507593499-a3f7d7d97667?w=800&q=80',
+    tags: ['PHP', 'Laravel', 'CodeIgniter'],
+    category: 'Web Technologies',
+    isBestseller: true,
+  },
+  {
+    id: 'nodejs',
+    title: 'Node.js',
+    description: 'Master server-side JavaScript with Node.js. Learn event-driven programming, npm, building RESTful APIs, and working with databases.',
+    instructor: 'Plus Technology Institute',
+    rating: 4.8,
+    students: 2900,
+    duration: '3 Months',
+    level: 'Intermediate',
+    price: 6999,
+    originalPrice: 10999,
+    image: 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&q=80',
+    tags: ['Node.js', 'Backend', 'JavaScript'],
+    category: 'Web Technologies',
+    isBestseller: true,
+  },
+  {
+    id: 'expressjs',
+    title: 'Express.js',
+    description: 'Build robust web applications and APIs with Express.js. Learn middleware, routing, authentication, security best practices, and deployment.',
+    instructor: 'Plus Technology Institute',
+    rating: 4.7,
+    students: 2500,
+    duration: '2 Months',
+    level: 'Intermediate',
+    price: 5999,
+    originalPrice: 9499,
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80',
+    tags: ['Express.js', 'Node.js', 'API'],
+    category: 'Web Technologies',
     isBestseller: false,
   },
   // Database
@@ -393,6 +496,7 @@ const courses = [
     level: 'Beginner',
     price: 4499,
     originalPrice: 6999,
+    image: 'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&q=80',
     tags: ['SQL', 'MySQL', 'Database'],
     category: 'Database',
     isBestseller: false,
@@ -599,7 +703,14 @@ export default function CoursesPage() {
             {sortedCourses.map((course) =>
               viewMode === 'grid' ? (
                 <Card key={course.id} className="group overflow-hidden transition-all hover:shadow-lg">
-                  <div className="relative aspect-video bg-gradient-to-br from-primary/20 to-primary/5">
+                  <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-primary/20 to-primary/5">
+                    {course.image && (
+                      <img
+                        src={course.image}
+                        alt={course.title}
+                        className="h-full w-full object-cover transition-transform group-hover:scale-105"
+                      />
+                    )}
                     {course.isBestseller && (
                       <Badge className="absolute left-3 top-3 bg-yellow-500 text-yellow-950">
                         Bestseller
@@ -651,6 +762,13 @@ export default function CoursesPage() {
                 <Card key={course.id} className="group transition-all hover:shadow-lg">
                   <div className="flex flex-col gap-4 p-4 md:flex-row">
                     <div className="relative aspect-video w-full shrink-0 overflow-hidden rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 md:w-64">
+                      {course.image && (
+                        <img
+                          src={course.image}
+                          alt={course.title}
+                          className="h-full w-full object-cover transition-transform group-hover:scale-105"
+                        />
+                      )}
                       {course.isBestseller && (
                         <Badge className="absolute left-2 top-2 bg-yellow-500 text-yellow-950">
                           Bestseller
