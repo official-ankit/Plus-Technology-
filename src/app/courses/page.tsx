@@ -438,7 +438,7 @@ const courses = [
   },
   {
     id: 'php',
-    title: 'PHP (Laravel, CodeIgniter)',
+    title: 'PHP',
     description: 'Learn PHP web development with popular frameworks Laravel and CodeIgniter. Master MVC architecture, database integration, and modern PHP practices.',
     instructor: 'Plus Technology Institute',
     rating: 4.8,
@@ -448,7 +448,7 @@ const courses = [
     price: 7999,
     originalPrice: 12999,
     image: 'https://images.unsplash.com/photo-1599507593499-a3f7d7d97667?w=800&q=80',
-    tags: ['PHP', 'Laravel', 'CodeIgniter'],
+    tags: ['PHP', 'Laravel', 'Web Development'],
     category: 'Web Technologies',
     isBestseller: true,
   },
